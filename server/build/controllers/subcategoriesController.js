@@ -57,8 +57,8 @@ class subcategoriesControllers {
     }
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { idsubCat } = req.params;
-            yield database_1.default.query('DELETE FROM subcategoria WHERE COD_SUB_CATEGORIA= ?', [idsubCat]);
+            const { id } = req.params;
+            yield database_1.default.query('DELETE FROM subcategoria WHERE COD_SUB_CATEGORIA= ?', [id]);
             res.json({ message: "The SUBCATEGORIE was deleted" });
         });
     }

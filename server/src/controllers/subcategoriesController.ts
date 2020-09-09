@@ -38,8 +38,8 @@ class subcategoriesControllers{
     }
 
     public async delete(req: Request, res: Response): Promise<void> {
-        const { idsubCat } = req.params;
-        await pool.query('DELETE FROM subcategoria WHERE COD_SUB_CATEGORIA= ?', [idsubCat]);
+        const { id } = req.params;
+        await pool.query('DELETE FROM subcategoria WHERE COD_SUB_CATEGORIA= ?', [id]);
         res.json({ message: "The SUBCATEGORIE was deleted" });
     }
 }

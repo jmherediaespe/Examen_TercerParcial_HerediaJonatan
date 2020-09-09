@@ -13,6 +13,7 @@ export class SubcategorieManageComponent implements OnInit {
   constructor( private subcategoriesService: SubcategoriesService) { }
   date = new Date() + '';
 
+  selectedOption:string;
   categories: any = [];
   subcategories: any = [];
 
@@ -20,7 +21,7 @@ export class SubcategorieManageComponent implements OnInit {
   
   ngOnInit(): void {
     this.getCategories();
-    
+    this.onChange;
   }
 
   getSubcategories(id: string){
@@ -41,6 +42,19 @@ export class SubcategorieManageComponent implements OnInit {
     );
   }
 
+  onChange(selectedOption){
+    this.getSubcategories(selectedOption);
+  }
 
+  deleteSubcategorie(id:string){
+    this.subcategoriesService.deleteSubcategorie(id).subscribe(
+      res =>{
+        console.log(res);
+        this.onChange;
+        this.getCategories();
+      },
+      err => console.error(err)
+    );
+  }
 
 }

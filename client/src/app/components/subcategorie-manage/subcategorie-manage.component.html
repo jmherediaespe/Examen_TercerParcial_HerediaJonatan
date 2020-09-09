@@ -1,14 +1,11 @@
 <div class="col-md-4 offset-md-2">
     <div class="card">
         <div class="card-body">
-            <form class="form-inline" (ngSubmit)="getCat()">
-                <div class="select">
-                    <select [(ngModel)]="selectedOption" class="form-control col-lg-8">
+            <div class="select">
+                <select [(ngModel)]="selectedOption" (change)="onChange(selectedOption)" class="form-control col-lg-8">
                         <option *ngFor="let categorie of categories" [ngValue]="categorie.COD_CATEGORIA" [ngModelOptions]="{standalone: true}">{{ categorie.DESCRIPCION }}</option>
                     </select>
-                    <button type="submit" class="btn btn-primary manage">Submit</button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>
@@ -18,7 +15,7 @@
             <th scope="col">CODIGO</th>
             <th scope="col">NOMBRE</th>
             <th scope="col">FECHA DE CREACION</th>
-            <th scope="col">Editar</th>
+            <th scope="col">Detalles</th>
             <th scope="col">Borrar</th>
         </tr>
     </thead>
@@ -27,8 +24,8 @@
             <td>{{subcategorie.COD_SUB_CATEGORIA}}</td>
             <td>{{subcategorie.NOMBRE}}</td>
             <td>{{subcategorie.FECHA_CREACION| date: 'yyyy-MM-dd'}}</td>
-            <td><button class="btn btn-info" [routerLink]="['/games/edit', game.COD_VIDEOJUEGO]"><i class="far fa-edit"></i></button></td>
-            <td><button class="btn btn-danger" (click)="deleteGame(game.COD_VIDEOJUEGO)"><i class="far fa-trash-alt"></i></button></td>
+            <td><button class="btn btn-info" [routerLink]="showDetails(subcategorie.COD_SUB_CATEGORIA)"><i class="far fa-edit"></i></button></td>
+            <td><button class="btn btn-danger" (click)="deleteSubcategorie(subcategorie.COD_SUB_CATEGORIA)"><i class="far fa-trash-alt"></i></button></td>
         </tr>
     </tbody>
 </table>
