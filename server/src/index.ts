@@ -2,7 +2,7 @@ import express, { Application } from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import indexRoutes from './routes/indexRoutes';
-import gamesRoutes from './routes/gamesRoutes';
+import subcategoriesRoutes from './routes/subcategoriesRoutes';
 
 class Server {
 public app: Application;
@@ -23,7 +23,7 @@ public app: Application;
 
     routes(): void{
         this.app.use('/',indexRoutes);
-        this.app.use('/videogames', gamesRoutes);
+        this.app.use('/subcategories', subcategoriesRoutes);
         
     }
 
